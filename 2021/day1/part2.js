@@ -1,5 +1,5 @@
 /**
- * December 1st Part 2: Same problem except using measurment windows (3 consecutive measurements is a window)
+ * 2021-12-01 Part 2: Same problem except using measurment windows (3 consecutive measurements is a window)
  */
 const { readDepthsToArray, countIncreases } = require('./utils');
 
