@@ -4,14 +4,14 @@ const { createInterface } = require('readline');
 
 /**
  * 
- * @param {string} path Path from 2021 base path
+ * @param {string} file File in 2021 data directory
  * @param {string[]} columns Array of column transformations
  * @param {string} delim Column delimiter
  * @returns 
  */
-exports.readLines = (path, columns = null, delim = ' ') => new Promise(res => {
-  const file = join(__dirname, path);
-  const read = createReadStream(file, { encoding: 'utf-8' });
+exports.readLines = (file, columns = null, delim = ' ') => new Promise(res => {
+  const path = join(__dirname, 'data', file);
+  const read = createReadStream(path, { encoding: 'utf-8' });
   const rl = createInterface(read);
   
   const rows = [];

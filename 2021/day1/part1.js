@@ -4,5 +4,5 @@
 const { readDepths, countIncreases } = require('./shared');
 
 readDepths().then(depths => {
-  console.log(`Total Increases: ${countIncreases(depths)}`);
+  console.log(`Answer: ${countIncreases(depths)}`);
 });

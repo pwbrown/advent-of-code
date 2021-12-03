@@ -3,7 +3,7 @@ const { readLines } = require('../utils');
 /**
  * Reads the diagnostic report as an array of binary strings
  */
-exports.readDiagnosticReport = () => readLines('day3/diagnostic-report.txt');
+exports.readDiagnosticReport = () => readLines('diagnostic-report.txt');
 
 /**
  * Calculates the gamma (most common digits) and epsilon (least common digits)

@@ -19,5 +19,5 @@ readDepths().then(depths => {
     .filter(w => w.length === 3)
     .map(w => w.reduce((p, c) => p + c, 0));
   
-  console.log(`Total increases: ${countIncreases(windows)}`);
+  console.log(`Answer: ${countIncreases(windows)}`);
 })

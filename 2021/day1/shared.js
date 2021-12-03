@@ -1,7 +1,7 @@
 const { readLines } = require('../utils');
 
 /** Read depth measurements from the depth file into an array of integers */
-exports.readDepths = () => readLines('day1/depth.txt', ['num']);
+exports.readDepths = () => readLines('depths.txt', ['num']);
 
 /** Count number of increases in an array of integers */
 exports.countIncreases = arr => arr.reduce((p, c, i, a) => {
