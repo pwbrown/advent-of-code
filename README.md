@@ -1,6 +1,6 @@
-# advent-of-code
-My solutions to adventofcode.com
+# AOC Solutions 
+My solutions to [Advent of Code](https://adventofcode.com)
 
-## Years
+## Years and Languages
 
-* [2021](./2021/README.md)
+* [2021](https://adventofcode.com/2021) - JavaScript (Node.js)
