@@ -1,9 +1,9 @@
 /**
  * 2021-12-02 Part 1
  */
-const { readCommandsToArray } = require('./utils');
+const { readCommands } = require('./shared');
 
-readCommandsToArray().then(commands => {
+readCommands().then(commands => {
   let horiz = 0;
   let depth = 0;
   let aim = 0;
