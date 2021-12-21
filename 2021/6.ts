@@ -1,14 +1,12 @@
-const { readFileSync } = require('fs');
-const { join } = require('path');
+import { getInput } from './utils';
 
 /** Gets first generation from lanternfish.txt file */
-const getFirstGeneration = () => 
-  readFileSync(join(__dirname, '../data/lanternfish.txt'), { encoding: 'utf8' })
-    .split(',')
-    .map(f => parseInt(f, 10));
+const FIRST_GEN = getInput(6)
+  .split(',')
+  .map(n => parseInt(n));
 
 /** Returns the number of fish after a certain number of days */
-exports.countFishAfterDays = (days) => {
+const countFishAfterDays = (days: number) => {
   /** Set array of fish counts where index = timer value */
   const groups = Array(9).fill(0);
   
@@ -16,7 +14,7 @@ exports.countFishAfterDays = (days) => {
    * Populate first generation by incrementing values
    * at array indices indicated by first gen value
    */
-  getFirstGeneration().forEach(f => { groups[f] += 1 });
+  FIRST_GEN.forEach(f => { groups[f] += 1 });
 
   /** Loop through each day */
   for (let day = 0; day < days; day += 1) {
@@ -45,3 +43,6 @@ exports.countFishAfterDays = (days) => {
   /** Return the sum of all values in the groups array as the final count of fish */
   return groups.reduce((p, c) => p + c, 0);
 }
+
+console.log(`Part 1: ${countFishAfterDays(80)}`);
+console.log(`Part 2: ${countFishAfterDays(256)}`);

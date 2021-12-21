@@ -1,23 +1,22 @@
-const { readLines } = require('../utils');
+import { getInput } from './utils';
 
-/**
- * Get vent line point coordinates
- */
-exports.getVentLines = () => readLines('vent-lines.txt')
-  .then(lines => lines
-    .map(l => l.split(' -> ')) // Split each line into an array of points
-    .map(points => points.reduce((p, c, i) => { // Convert points into object of { x1, y1, x2, y2 }
-      const coords = c.split(',').map(n => parseInt(n, 10));
-      p[`x${i + 1}`] = coords[0];
-      p[`y${i + 1}`] = coords[1];
-      return p;
-    }, {})),
-  );
+interface Line {
+  [ key: string ]: number;
+}
 
+const ventLines = getInput(5)
+  .split('\n')
+  .map(l => l.split(' -> '))
+  .map(points => points.reduce<Line>((p, c, i) => {
+    const coords = c.split(',').map(n => parseInt(n));
+    p[`x${i + 1}`] = coords[0];
+    p[`y${i + 1}`] = coords[1];
+    return p;
+  }, {}))
 
-exports.countOverlaps = (lines) => {
+const countOverlaps = (lines: Line[]) => {
   /** Keep track of each point that a line touches */
-  const points = {};
+  const points: { [key: string]: number } = {};
 
   let overlaps = 0;
   /** Draw each line on the grid and count the number of overlaps */
@@ -48,4 +47,9 @@ exports.countOverlaps = (lines) => {
   });
   
   return overlaps;
-};
+}
+
+const horizontalAndVerticalLines = ventLines.filter(l => l.x1 === l.x2 || l.y1 === l.y2);
+
+console.log(`Part 1: ${countOverlaps(horizontalAndVerticalLines)}`);
+console.log(`Part 2: ${countOverlaps(ventLines)}`);
